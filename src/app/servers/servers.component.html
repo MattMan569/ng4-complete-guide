@@ -1,10 +1,49 @@
 <label for="">Server Name</label>
+
+<!-- One way data binding - Call function on every input -->
 <!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)"> -->
+
+
+<!-- Two way data binding - Variable and the form are both updated when either is changed -->
 <input type="text" class="form-control" [(ngModel)]="serverName">
-<p>{{ serverName }}</p>
+
+
+<!-- <p>{{ serverName }}</p> -->
+
+
+<!-- Property binding to enable the button after two seconds -->
+<!-- Event listening to update the name -->
 <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+
+
+<!-- Show content by string interpolation or innerText attribute -->
 <!-- <p>{{ allowNewServer }}</p> -->
 <!-- <p [innerText]="allowNewServer"></p> -->
-<p>{{ serverCreationStatus }}</p>
+
+
+<!-- String interpolation to output the data -->
+<!-- <p>{{ serverCreationStatus }}</p> -->
+
+
+<!-- Structural directive to conditionally display a paragraph -->
+<!--
+<p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p>
+<ng-template #noServer>
+    <p>
+        No server was created!
+    </p>
+</ng-template>
+-->
+
+<!-- Instead of if-else, can use reverse check -->
+<!-- 
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+<p *ngIf="!serverCreated">No server was created!</p>
+-->
+
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p>
+
+
+<!-- Display the content of the app-server template -->
 <app-server></app-server>
 <app-server></app-server>

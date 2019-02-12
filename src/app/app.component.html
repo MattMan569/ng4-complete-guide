@@ -14,7 +14,16 @@
                     blue background (via ngStyle) and white color (ngClass)</li>
             </ol>
             <br>
-            
+            <!-- <button class="btn btn-primary" (click)="showSecret = !showSecret">Display Details</button> -->
+            <button class="btn btn-primary" (click)="onToggleDetails()">
+                DisplayDetails
+            </button>
+            <p *ngIf="showSecret">Secret Password = tuna</p>
+            <div *ngFor="let logItem of log"
+                [ngStyle]="{'background-color': logItem >= 5 ? 'blue' : 'transparent'}"
+                [ngClass]="{'white-text': logItem >= 5}">
+                {{ logItem }}
+            </div>
         </div>
     </div>
 </div>

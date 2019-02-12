@@ -19,9 +19,10 @@
                 DisplayDetails
             </button>
             <p *ngIf="showSecret">Secret Password = tuna</p>
-            <div *ngFor="let logItem of log"
-                [ngStyle]="{'background-color': logItem >= 5 ? 'blue' : 'transparent'}"
-                [ngClass]="{'white-text': logItem >= 5}">
+            <!-- Can get additional information from ngFor -->
+            <div *ngFor="let logItem of log; let i = index"
+                [ngStyle]="{'background-color': i >= 4 ? 'blue' : 'transparent'}"
+                [ngClass]="{'white-text': i >= 4}">
                 {{ logItem }}
             </div>
         </div>

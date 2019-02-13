@@ -11,12 +11,12 @@ export class RecipeListComponent implements OnInit {
         new Recipe(
             'A Test Recipe',
             'This is simply a test',
-            'https://get.pxhere.com/photo/dish-meal-food-produce-recipe-fish-breakfast-meat-pork-cuisine-steak-pork-chop-power-dishes-grilling-fried-food-604134.jpg'
+            'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg'
         ),
         new Recipe(
             'A Test Recipe',
             'This is simply a test',
-            'https://get.pxhere.com/photo/dish-meal-food-produce-recipe-fish-breakfast-meat-pork-cuisine-steak-pork-chop-power-dishes-grilling-fried-food-604134.jpg'
+            'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg'
         )
     ];
 

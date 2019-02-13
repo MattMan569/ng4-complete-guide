@@ -1,4 +1,11 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    EventEmitter,
+    Output,
+    ViewChild,
+    ElementRef
+} from '@angular/core';
 
 @Component({
     selector: 'app-cockpit',
@@ -18,7 +25,11 @@ export class CockpitComponent implements OnInit {
     }>();
 
     // newServerName = '';
-    newServerContent = '';
+    // newServerContent = '';
+
+    // Get the local reference via @ViewChild('<name>')
+    // Is a reference to an HTML element rather than the element itself
+    @ViewChild('serverContentInput') serverContentInput: ElementRef;
 
     constructor() {}
 
@@ -29,14 +40,16 @@ export class CockpitComponent implements OnInit {
     onAddServer(nameInput: HTMLInputElement) {
         this.serverCreated.emit({
             serverName: nameInput.value,
-            serverContent: this.newServerContent
+
+            // Access the underlying element of the reference
+            serverContent: this.serverContentInput.nativeElement.value
         });
     }
 
     onAddBlueprint(nameInput: HTMLInputElement) {
         this.blueprintCreated.emit({
             serverName: nameInput.value,
-            serverContent: this.newServerContent
+            serverContent: this.serverContentInput.nativeElement.value
         });
     }
 }

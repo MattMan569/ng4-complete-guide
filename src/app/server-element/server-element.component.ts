@@ -10,7 +10,10 @@ import {
     AfterContentChecked,
     AfterViewInit,
     AfterViewChecked,
-    OnDestroy
+    OnDestroy,
+    ViewChild,
+    ElementRef,
+    ContentChild
 } from '@angular/core';
 
 @Component({
@@ -43,6 +46,13 @@ export class ServerElementComponent
     // };
     @Input() name: string;
 
+    // Element part of the current view template
+    @ViewChild('heading') header: ElementRef;
+
+    // Element that is the content within another template,
+    // passed to this template via ng-content
+    @ContentChild('contentParagraph') paragraph: ElementRef;
+
     constructor() {
         console.log('constructor called!');
     }
@@ -59,6 +69,8 @@ export class ServerElementComponent
         // Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         // Add 'implements OnInit' to the class.
         console.log('ngOnInit called!');
+        console.log(this.header.nativeElement.textContent); // Displays nothing
+        console.log(this.paragraph.nativeElement.textContent); // Displays nothing
     }
 
     ngDoCheck(): void {
@@ -72,6 +84,7 @@ export class ServerElementComponent
         // Called after ngOnInit when the component's or directive's content has been initialized.
         // Add 'implements AfterContentInit' to the class.
         console.log('ngAfterContentInit called!');
+        console.log(this.paragraph.nativeElement.textContent);
     }
 
     ngAfterContentChecked(): void {
@@ -84,6 +97,7 @@ export class ServerElementComponent
         // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
         // Add 'implements AfterViewInit' to the class.
         console.log('ngAfterViewInit called!');
+        console.log(this.header.nativeElement.textContent);
     }
 
     ngAfterViewChecked(): void {

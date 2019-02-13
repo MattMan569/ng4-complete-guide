@@ -7,8 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ServerElementComponent implements OnInit {
     // By default, all properties of components are not
-    // accessible outside of that component
-    @Input() element: { type: string; name: string; content: string };
+    // accessible outside of that component, use @Input
+    // Aliases can be defined as parameters of this input
+
+    // tslint:disable-next-line:no-input-rename
+    @Input('srvElement') element: {
+        type: string;
+        name: string;
+        content: string;
+    };
 
     constructor() {}
 

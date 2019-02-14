@@ -1,5 +1,5 @@
 import { LoggingService } from './logging.service';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 // Add Injectable not to the service to be injected,
 // but to the receiving service that will have other
@@ -20,6 +20,9 @@ export class AccountsService {
             status: 'unknown'
         }
     ];
+
+    // Provide an event that will be triggered in one component and listened for in another
+    statusUpdated = new EventEmitter<string>();
 
     constructor(private loggingService: LoggingService) {}
 

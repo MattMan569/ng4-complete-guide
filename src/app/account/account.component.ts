@@ -21,5 +21,8 @@ export class AccountComponent {
 
         // console.log('A server status changed, new status: ' + status);
         // this.loggingService.logStatusChange(status);
+
+        // Trigger an event in a service
+        this.accountsService.statusUpdated.emit(status);
     }
 }

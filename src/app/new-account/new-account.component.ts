@@ -17,7 +17,12 @@ export class NewAccountComponent {
     // Service injection
     // Specify the service type in the constructor,
     // do not instantiate the service anywhere else
-    constructor(private loggingService: LoggingService, private accountsService: AccountsService) {}
+    constructor(private loggingService: LoggingService, private accountsService: AccountsService) {
+        // Listen to an event provided in a service
+        this.accountsService.statusUpdated.subscribe((status: string) =>
+            alert('New status: ' + status)
+        );
+    }
 
     onCreateAccount(accountName: string, accountStatus: string) {
         // this.accountAdded.emit({

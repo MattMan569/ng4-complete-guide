@@ -5,10 +5,13 @@
                 Only show odd numbers
             </button>
             <br /><br />
+
+            <!-- Show all items -->
             <ul class="list-group">
                 <li class="list-group-item" *ngFor="let number of numbers">{{ number }}</li>
             </ul>
             <p appBasicHighlight>Style me with a basic directive!</p>
+
             <!-- Override the default properties -->
             <p appBetterHighlight [defaultColor]="'yellow'" [highlightColor]="'red'">
                 Style me with a better directive!
@@ -16,6 +19,18 @@
             <ng-template [ngIf]="onlyOdd">
                 <p>Only odd</p>
             </ng-template>
+
+            <!-- Show only odd numbers when toggled -->
+            <ul class="list-group">
+                <ng-container *ngIf="!onlyOdd; else oddTemplate">
+                    <li class="list-group-item" *ngFor="let number of numbers">{{ number }}</li>
+                </ng-container>
+                <ng-template #oddTemplate>
+                    <div *ngFor="let number of numbers">
+                        <li class="list-group-item" *ngIf="number % 2 !== 0">{{ number }}</li>
+                    </div>
+                </ng-template>
+            </ul>
         </div>
     </div>
 </div>

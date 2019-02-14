@@ -22,4 +22,16 @@ export class ShoppingListService {
         // Broadcast a new copy of the changed array
         this.ingredientsChanged.emit(this.ingredients.slice());
     }
+
+    addIngredients(ingredients: Ingredient[]) {
+        // Option 1: Would emit an event every time, not great
+        // for (let ingredient of ingredients) {
+        //     this.addIngredient(ingredient);
+        // }
+
+        // Option 2: Add all ingredients in one go, then emit the event
+        // Uses spread operator (...) to push the contents of an array rather than an array itself
+        this.ingredients.push(...ingredients);
+        this.ingredientsChanged.emit(this.ingredients.slice());
+    }
 }

@@ -20,6 +20,11 @@
                 <p>Only odd</p>
             </ng-template>
 
+            <!-- Custom structural directive, opposite of ngIf -->
+            <div *appUnless="onlyOdd">
+                <p>Not only odd</p>
+            </div>
+
             <!-- Show only odd numbers when toggled -->
             <ul class="list-group">
                 <ng-container *ngIf="!onlyOdd; else oddTemplate">

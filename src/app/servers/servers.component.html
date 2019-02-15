@@ -7,6 +7,13 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-4">
+        <!-- Relative pathing -->
+        <a routerLink="servers">This link is broken</a>
+        <br />
+        <!-- Absolute pathing -->
+        <a routerLink="/servers">This link works</a>
+        <hr />
+
         <app-edit-server></app-edit-server>
         <hr />
         <app-server></app-server>

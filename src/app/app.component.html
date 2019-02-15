@@ -4,6 +4,7 @@
             <ul class="nav nav-tabs">
                 <!-- Do not use href, it will work but it will reload the page -->
                 <!-- Array notation allows more complex path construction: ="['/a', 'b', 'c']" -->
+
                 <li role="presentation" class="active"><a routerLink="/">Home</a></li>
                 <li role="presentation"><a routerLink="/servers">Servers</a></li>
                 <!-- <li role="presentation"><a [routerLink]="'/users'">Users</a></li> -->
@@ -11,6 +12,7 @@
             </ul>
         </div>
     </div>
+
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
             <!-- Do not include pages that are in the router -->
@@ -20,6 +22,7 @@
             <router-outlet></router-outlet>
         </div>
     </div>
+
     <!-- <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
             <app-users></app-users>

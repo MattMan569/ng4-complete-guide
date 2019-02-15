@@ -5,10 +5,31 @@
                 <!-- Do not use href, it will work but it will reload the page -->
                 <!-- Array notation allows more complex path construction: ="['/a', 'b', 'c']" -->
 
-                <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-                <li role="presentation"><a routerLink="/servers">Servers</a></li>
+                <!-- Use angular directive to set class on active router link -->
+                <!-- <li role="presentation" class="active"><a routerLink="/">Home</a></li> -->
+
+                <!--
+                    By default, it applies if the path is anwhere within the active route.
+                    The path "/" is always part of the path, so is always active.
+                    Add [routerLinkActiveOptions]="{ exact: true }" to require the exact path.
+                -->
+                <li
+                    role="presentation"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                >
+                    <a routerLink="/">Home</a>
+                </li>
+
+                <li role="presentation" routerLinkActive="active">
+                    <a routerLink="/servers">Servers</a>
+                </li>
+
+                <!-- Different notations -->
                 <!-- <li role="presentation"><a [routerLink]="'/users'">Users</a></li> -->
-                <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
+                <li role="presentation" routerLinkActive="active">
+                    <a [routerLink]="['/users']">Users</a>
+                </li>
             </ul>
         </div>
     </div>

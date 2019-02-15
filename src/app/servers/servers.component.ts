@@ -29,8 +29,6 @@ export class ServersComponent implements OnInit {
         // This does not work, relative to servers '/servers/servers'
         this.router.navigate(['servers'], { relativeTo: this.route });
 
-        console.log(this.route);
-
         // This works, relative to root '/servers'
         // this.router.navigate(['servers'], { relativeTo: this.route });
     }

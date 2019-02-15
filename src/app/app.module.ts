@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -11,6 +12,14 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
+
+// Hold all of the app's routes
+const appRoutes: Routes = [
+  // path, action (load component)
+  { path: '', component: HomeComponent },
+  { path: 'users', component: UsersComponent }, // localhost:4200/users
+  { path: 'servers', component: ServersComponent }
+];
 
 @NgModule({
   declarations: [
@@ -22,12 +31,9 @@ import { ServersService } from './servers/servers.service';
     EditServerComponent,
     ServerComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
-  ],
+  // Import RouterModule and register the routes
+  imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(appRoutes)],
   providers: [ServersService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

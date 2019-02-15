@@ -1,2 +1,7 @@
 <p>User with ID {{ user.id }} loaded.</p>
 <p>User name is {{ user.name }}</p>
+<hr />
+<!-- /users/10/Anna -->
+<!-- By default, will not update the above paragraphs with the new route information -->
+<!-- Subscribe to the route to be notified of changes -->
+<a [routerLink]="['/users', 10, 'Anna']">Load Anna (10)</a>

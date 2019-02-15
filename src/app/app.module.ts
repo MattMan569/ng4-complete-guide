@@ -15,25 +15,25 @@ import { ServersService } from './servers/servers.service';
 
 // Hold all of the app's routes
 const appRoutes: Routes = [
-  // path, action (load component)
-  { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent }, // localhost:4200/users
-  { path: 'servers', component: ServersComponent }
+    // path, action (load component)
+    { path: '', component: HomeComponent },
+    { path: 'users', component: UsersComponent }, // localhost:4200/users
+    { path: 'servers', component: ServersComponent }
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    UsersComponent,
-    ServersComponent,
-    UserComponent,
-    EditServerComponent,
-    ServerComponent
-  ],
-  // Import RouterModule and register the routes
-  imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(appRoutes)],
-  providers: [ServersService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        UsersComponent,
+        ServersComponent,
+        UserComponent,
+        EditServerComponent,
+        ServerComponent
+    ],
+    // Import RouterModule and register the routes
+    imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(appRoutes)],
+    providers: [ServersService],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

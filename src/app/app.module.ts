@@ -21,9 +21,9 @@ const appRoutes: Routes = [
     // localhost:4200/users
     { path: 'users', component: UsersComponent },
 
-    // Load the single user component by user ID
+    // Load the single user component by user ID and name
     // The colon designates a dynamic path segment
-    { path: 'users/:id', component: UserComponent },
+    { path: 'users/:id/:name', component: UserComponent },
 
     { path: 'servers', component: ServersComponent }
 ];

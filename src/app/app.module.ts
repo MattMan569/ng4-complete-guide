@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 
 @NgModule({
     declarations: [
@@ -29,7 +30,7 @@ import { AuthService } from './auth.service';
     ],
     // Import RouterModule and register the routes
     imports: [BrowserModule, FormsModule, HttpModule, AppRoutingModule],
-    providers: [ServersService, AuthGuard, AuthService],
+    providers: [ServersService, AuthGuard, AuthService, CanDeactivateGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

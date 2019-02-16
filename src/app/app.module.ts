@@ -19,15 +19,26 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent },
 
     // localhost:4200/users
-    { path: 'users', component: UsersComponent },
+    {
+        path: 'users',
+        component: UsersComponent,
+        children: [
+            // Load the single user component by user ID and name
+            // The colon designates a dynamic path segment
+            { path: ':id/:name', component: UserComponent }
+        ]
+    },
 
-    // Load the single user component by user ID and name
-    // The colon designates a dynamic path segment
-    { path: 'users/:id/:name', component: UserComponent },
-
-    { path: 'servers', component: ServersComponent }
-    { path: 'servers/:id', component: ServerComponent }
-    { path: 'servers/:id/edit', component: EditServerComponent }
+    {
+        path: 'servers',
+        component: ServersComponent,
+        // Child routes of servers
+        children: [
+            // 'servers/' is always prepended to the route
+            { path: ':id', component: ServerComponent },
+            { path: ':id/edit', component: EditServerComponent }
+        ]
+    }
 ];
 
 @NgModule({

@@ -16,18 +16,21 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-4">
-        <button class="btn btn-primary" (click)="onReload()">Reload Page (broken)</button>
-        <br />
+        <!-- <button class="btn btn-primary" (click)="onReload()">Reload Page (broken)</button>
+        <br /> -->
 
         <!-- Relative pathing -->
-        <a routerLink="servers">This link is broken</a>
-        <br />
+        <!-- <a routerLink="servers">This link is broken</a>
+        <br /> -->
         <!-- Absolute pathing -->
-        <a routerLink="/servers">This link works</a>
+        <!-- <a routerLink="/servers">This link works</a>
         <hr />
 
         <app-edit-server></app-edit-server>
         <hr />
-        <!-- <app-server></app-server> -->
+        <app-server></app-server> -->
+
+        <!-- Router outlet for child routes of the servers route -->
+        <router-outlet></router-outlet>
     </div>
 </div>

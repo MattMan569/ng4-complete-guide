@@ -28,8 +28,8 @@ export class ServerComponent implements OnInit {
     }
 
     onEdit() {
-        // We are already at '/servers/<ID>
-        // Just append /edit to the path
-        this.router.navigate(['edit'], { relativeTo: this.route });
+        // We are already at '/servers/<ID>, just append /edit to the path
+        // Preserve the query params so the edit server component can use them
+        this.router.navigate(['edit'], { relativeTo: this.route, queryParamsHandling: 'preserve' });
     }
 }

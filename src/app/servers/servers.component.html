@@ -4,7 +4,7 @@
             <!-- Can add link queries (?=xyz) using query params, key-value pairs -->
             <!-- Can add fragments (#xyz) using fragment -->
             <a
-                [routerLink]="['/servers', 5, 'edit']"
+                [routerLink]="['/servers', server.id]"
                 [queryParams]="{ allowEdit: '1' }"
                 [fragment]="'loading'"
                 href="#"
@@ -28,6 +28,6 @@
 
         <app-edit-server></app-edit-server>
         <hr />
-        <app-server></app-server>
+        <!-- <app-server></app-server> -->
     </div>
 </div>

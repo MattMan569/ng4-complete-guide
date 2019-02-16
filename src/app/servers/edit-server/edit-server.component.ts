@@ -20,12 +20,12 @@ export class EditServerComponent implements OnInit {
 
         // Wont work if the component does not change
         // The component is not re-rendered with the new info
-        console.log(this.route.snapshot.queryParams);
-        console.log(this.route.snapshot.fragment);
+        // console.log(this.route.snapshot.queryParams);
+        // console.log(this.route.snapshot.fragment);
 
         // Subscribe to watch for any changes
-        this.route.queryParams.subscribe();
-        this.route.fragment.subscribe();
+        // this.route.queryParams.subscribe();
+        // this.route.fragment.subscribe();
 
         this.server = this.serversService.getServer(1);
         this.serverName = this.server.name;

@@ -10,6 +10,7 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 // Hold all of the app's routes
 const appRoutes: Routes = [
@@ -46,7 +47,9 @@ const appRoutes: Routes = [
     },
 
     // Page not found / invalid route
-    { path: 'not-found', component: PageNotFoundComponent },
+    // { path: 'not-found', component: PageNotFoundComponent },
+    // Display a page with the error message specified in 'data'
+    { path: 'not-found', component: ErrorPageComponent, data: { message: 'Page not found!' } },
 
     // Wildcard route, this should be the last route
     { path: '**', redirectTo: '/not-found' },

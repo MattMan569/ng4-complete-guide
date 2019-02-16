@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ServerResolver } from './servers/server/server-resolver.service';
 
 // Hold all of the app's routes
 const appRoutes: Routes = [
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
         // Child routes of servers
         children: [
             // 'servers/' is always prepended to the route
-            { path: ':id', component: ServerComponent },
+            // The server resolver gives access to the server object when the route is loaded
+            { path: ':id', component: ServerComponent, resolve: { server: ServerResolver } },
             {
                 path: ':id/edit',
                 component: EditServerComponent,

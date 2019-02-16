@@ -45,7 +45,10 @@ const appRoutes: Routes = [
     { path: 'not-found', component: PageNotFoundComponent },
 
     // Wildcard route, this should be the last route
-    { path: '**', redirectTo: '/not-found' }
+    { path: '**', redirectTo: '/not-found' },
+
+    // Empty path
+    { path: '', redirectTo: '/not-found', pathMatch: 'full' }
 ];
 
 @NgModule({

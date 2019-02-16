@@ -39,6 +39,8 @@ const appRoutes: Routes = [
         children: [
             // 'servers/' is always prepended to the route
             // The server resolver gives access to the server object when the route is loaded
+            // Very important when getting data asynchronously
+            // The resolver fetches data, then loads the component
             { path: ':id', component: ServerComponent, resolve: { server: ServerResolver } },
             {
                 path: ':id/edit',
@@ -64,6 +66,11 @@ const appRoutes: Routes = [
     // Don't need declarations, already declared in app.module
 
     imports: [RouterModule.forRoot(appRoutes)],
+
+    // Old browsers can't handle Angular routing, and servers
+    // that give a 404 error rather than return index.html
+    // when a link is not resolveable also break the routing
+    // imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
 
     // Export the router module to modules that import this module
     exports: [RouterModule]

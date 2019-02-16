@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs-compat';
 
 @Component({
     selector: 'app-home',
@@ -8,5 +9,11 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        // Our own observable, emit data every second
+        const myNumbers = Observable.interval(1000);
+        myNumbers.subscribe((number: number) => {
+            console.log(number);
+        });
+    }
 }

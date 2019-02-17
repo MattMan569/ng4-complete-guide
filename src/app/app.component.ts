@@ -19,6 +19,26 @@ export class AppComponent {
 
     suggestUserName() {
         const suggestedName = 'Superuser';
+        // Set the value by passing an exact copy of the form
+        // with the desired data in the fields.
+        // Not the best approach, will reset filled fields.
+        // this.signupForm.setValue({
+        //     userData: {
+        //         username: suggestedName,
+        //         email: ''
+        //     },
+        //     secret: 'pet',
+        //     questionAnswer: '',
+        //     gender: 'female'
+        // });
+
+        // Patch only the desired values, rather than the whole form
+        this.signupForm.form.patchValue({
+            userData: {
+                username: suggestedName
+            }
+        });
+        this.signupForm.form.patchValue({ questionAnswer: 'xyz' });
     }
 
     // Triggered when the form is submitted

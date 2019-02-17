@@ -64,5 +64,10 @@ export class AppComponent {
         this.user.gender = this.signupForm.value.gender;
 
         this.submitted = true;
+
+        // Empties all form values and resets the form state (valid, touched, etc.)
+        // Will reset to specified values if an exact matching object is passed,
+        // as in setValue
+        this.signupForm.reset();
     }
 }

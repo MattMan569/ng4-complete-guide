@@ -5,7 +5,8 @@
             <!-- Pass the Angular form by local reference via ngForm -->
             <!-- <form (ngSubmit)="onSubmit(form)" #form="ngForm"> -->
             <form (ngSubmit)="onSubmit()" #form="ngForm">
-                <div id="user-data">
+                <!-- Group the form inputs into a single object -->
+                <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input
@@ -37,6 +38,16 @@
                         </p>
                     </div>
                 </div>
+                <!-- Display only once all controls have been touched -->
+                <p
+                    *ngIf="
+                        userData.invalid &&
+                        userData.control.controls['username'].touched &&
+                        userData.control.controls['email'].touched
+                    "
+                >
+                    User data is invalid!
+                </p>
                 <div class="form-group">
                     <label for="secret">Secret Questions</label>
                     <select

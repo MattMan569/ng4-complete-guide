@@ -29,9 +29,13 @@
                             name="email"
                             required
                             email
+                            #email="ngModel"
                         />
+                        <!-- Show a help text if the input is touched and has invalid data -->
+                        <p *ngIf="email.invalid && email.touched" class="help-block">
+                            Please enter a valid email!
+                        </p>
                     </div>
-                    <p *ngIf="">Please enter a valid value!</p>
                 </div>
                 <div class="form-group">
                     <label for="secret">Secret Questions</label>

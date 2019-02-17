@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,12 +7,22 @@ import { NgForm } from '@angular/forms';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    // Get the element with the local reference 'form'
+    // which is, of course, the form itself,
+    // via ViewChild rather than passing it via onSubmit.
+    // Merely an alternative method.
+    @ViewChild('form') signupForm: NgForm;
+
     suggestUserName() {
         const suggestedName = 'Superuser';
     }
 
     // Triggered when the form is submitted
-    onSubmit(form: NgForm) {
-        console.log(form);
+    // onSubmit(form: NgForm) {
+    //     console.log(form);
+    // }
+
+    onSubmit() {
+        console.log(this.signupForm);
     }
 }

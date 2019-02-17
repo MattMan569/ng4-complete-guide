@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 export class UsersService {
     // A subject is an observable and an observer at the same time

@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
-import { Observer } from 'rxjs/Observer';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Observer, Subscription, interval } from 'rxjs';
+// import 'rxjs/Rx';
+import { map } from 'rxjs/Operators';
 
 @Component({
     selector: 'app-home',
@@ -19,9 +18,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     ngOnInit() {
         // Our own observable, emit data every second
         // Map is an rxjs operator that transforms then returns data
-        const myNumbers = Observable.interval(1000).map((data: number) => {
-            return data * 2;
-        });
+        // const myNumbers = Observable.interval(1000).map((data: number) => {
+        //     return data * 2;
+        // });
+
+        // Without rxjs-compat, map must be passed into pipe
+        const myNumbers = interval(1000).pipe(
+            map((data: number) => {
+                return data * 2;
+            })
+        );
         this.numbersObsSubscription = myNumbers.subscribe((number: number) => {
             console.log(number);
         });

@@ -1,3 +1,10 @@
 .container {
     margin-top: 30px;
 }
+
+/* Highlight invalid form inputs 
+   after they have been clicked */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+    border: 1px solid red;
+}

@@ -31,6 +31,7 @@
                             email
                         />
                     </div>
+                    <p *ngIf="">Please enter a valid value!</p>
                 </div>
                 <div class="form-group">
                     <label for="secret">Secret Questions</label>
@@ -40,7 +41,10 @@
                     </select>
                 </div>
                 <!-- The default behaviour of 'submit' buttons will submit the form -->
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <!-- Disabled while the form data is invalid -->
+                <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+                    Submit
+                </button>
             </form>
         </div>
     </div>

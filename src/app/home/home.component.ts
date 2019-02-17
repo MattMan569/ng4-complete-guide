@@ -18,7 +18,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         // Our own observable, emit data every second
-        const myNumbers = Observable.interval(1000);
+        // Map is an rxjs operator that transforms then returns data
+        const myNumbers = Observable.interval(1000).map((data: number) => {
+            return data * 2;
+        });
         this.numbersObsSubscription = myNumbers.subscribe((number: number) => {
             console.log(number);
         });

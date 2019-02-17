@@ -1,3 +1,8 @@
 form {
     margin-top: 50px;
 }
+
+.invalid-form {
+    font-weight: bold;
+    color: #e00000;
+}

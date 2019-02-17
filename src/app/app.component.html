@@ -1,21 +1,6 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-            <!--
-                Add a Form with the following Inputs (and Validators)
-
-                1) Mail address (should not be empty and should be an email address)
-                2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
-                   Set "Advanced" as Default
-                3) A Password field (should not be empty)
-                4) A Submit Button
-                
-                Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.
-                
-                Upon submitting the form, you should simply print the Value of the Form to the Console.
-                Optionally, display it in your template.
-            -->
-
             <form (ngSubmit)="onSubmit()" #form="ngForm">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -42,7 +27,7 @@
                         [ngModel]="defaultSubscription"
                     >
                         <option *ngFor="let type of subscriptionTypes" [value]="type">
-                            {{ type }}
+                            {{ capitalize(type) }}
                         </option>
                     </select>
                 </div>
@@ -61,14 +46,20 @@
                         Invalid password!
                     </p>
                 </div>
-                <p *ngIf="form.invalid && allTouched">The form contains invalid data!</p>
+                <p *ngIf="form.invalid && allTouched" class="invalid-form">
+                    The form contains invalid data!
+                </p>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="submittedForm">
+        <hr />
         <div class="col-xs-12">
-            <p *ngFor="let item of submittedForm">{{ item }}</p>
+            <!-- Print the key-value pair of the submitted form -->
+            <p *ngFor="let item of (submittedForm | keyvalue)">
+                <b>{{ capitalize(item.key) }}:</b> {{ item.value }}
+            </p>
         </div>
     </div>
 </div>

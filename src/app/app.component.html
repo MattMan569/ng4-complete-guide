@@ -48,6 +48,7 @@
                 >
                     User data is invalid!
                 </p>
+
                 <div class="form-group">
                     <label for="secret">Secret Questions</label>
                     <select
@@ -69,6 +70,21 @@
                     ></textarea>
                 </div>
                 <p>Your reply: {{ answer }}</p>
+
+                <!-- Create a radio button for every element in the genders array -->
+                <div class="radio" *ngFor="let gender of genders">
+                    <label>
+                        <input
+                            type="radio"
+                            name="gender"
+                            [ngModel]="'male'"
+                            [value]="gender"
+                            required
+                        />
+                        {{ gender }}
+                    </label>
+                </div>
+
                 <!-- The default behaviour of 'submit' buttons will submit the form -->
                 <!-- Disabled while the form data is invalid -->
                 <button class="btn btn-primary" type="submit" [disabled]="form.invalid">

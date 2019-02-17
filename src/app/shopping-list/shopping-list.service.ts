@@ -1,9 +1,10 @@
+import { Subject } from 'rxjs';
+
 import { Ingredient } from '../shared/ingredient.model';
-import { EventEmitter } from '@angular/core';
 
 export class ShoppingListService {
     // Notify listeners that the ingredient list has changed
-    ingredientsChanged = new EventEmitter<Ingredient[]>();
+    ingredientsChanged = new Subject<Ingredient[]>();
 
     private ingredients: Ingredient[] = [
         new Ingredient('Apples', 5),
@@ -20,7 +21,7 @@ export class ShoppingListService {
         this.ingredients.push(ingredient);
 
         // Broadcast a new copy of the changed array
-        this.ingredientsChanged.emit(this.ingredients.slice());
+        this.ingredientsChanged.next(this.ingredients.slice());
     }
 
     addIngredients(ingredients: Ingredient[]) {
@@ -32,6 +33,6 @@ export class ShoppingListService {
         // Option 2: Add all ingredients in one go, then emit the event
         // Uses spread operator (...) to push the contents of an array rather than an array itself
         this.ingredients.push(...ingredients);
-        this.ingredientsChanged.emit(this.ingredients.slice());
+        this.ingredientsChanged.next(this.ingredients.slice());
     }
 }

@@ -13,6 +13,8 @@ export class AppComponent {
     // Merely an alternative method.
     @ViewChild('form') signupForm: NgForm;
 
+    defaultQuestion = 'teacher';
+
     suggestUserName() {
         const suggestedName = 'Superuser';
     }

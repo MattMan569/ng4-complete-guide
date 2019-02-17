@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-            <form>
+            <!-- Call onSubmit when the submit button is clicked -->
+            <!-- Pass the Angular form by local reference via ngForm -->
+            <form (ngSubmit)="onSubmit(form)" #form="ngForm">
                 <div id="user-data">
                     <div class="form-group">
                         <label for="username">Username</label>
@@ -26,6 +28,7 @@
                         <option value="teacher">Your first teacher?</option>
                     </select>
                 </div>
+                <!-- The default behaviour of 'submit' buttons will submit the form -->
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
         </div>

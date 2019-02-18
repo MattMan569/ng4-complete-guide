@@ -16,8 +16,14 @@ export class AppComponent implements OnInit {
             // Key-value pairs for form controls
             // Arg1: default value
             // Arg2: validators
-            username: new FormControl(null, Validators.required),
-            email: new FormControl(null, [Validators.required, Validators.email]),
+
+            // Can create another form group to group form controls together
+            userData: new FormGroup({
+                username: new FormControl(null, Validators.required),
+                email: new FormControl(null, [Validators.required, Validators.email])
+            }),
+            // username: new FormControl(null, Validators.required),
+            // email: new FormControl(null, [Validators.required, Validators.email]),
             gender: new FormControl('male')
         });
     }
@@ -26,6 +32,6 @@ export class AppComponent implements OnInit {
     // don't need a local reference
     onSubmit() {
         console.log(this.signupForm);
-        console.log(this.signupForm.value.username);
+        console.log(this.signupForm.value.userData.username);
     }
 }

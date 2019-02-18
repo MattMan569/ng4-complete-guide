@@ -18,7 +18,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     subscription: Subscription;
     editMode = false;
     editedItemIndex: number;
-    editedItem: Ingredient;
+    ingredientToEdit: Ingredient;
 
     constructor(private slService: ShoppingListService) {}
 
@@ -27,12 +27,12 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
         this.subscription = this.slService.startedEditing.subscribe((index: number) => {
             this.editedItemIndex = index;
             this.editMode = true;
-            this.editedItem = this.slService.getIngredient(index);
+            this.ingredientToEdit = this.slService.getIngredient(index);
 
             // Populate the form with the ingredient to be edited
             this.slForm.setValue({
-                name: this.editedItem.name,
-                amount: this.editedItem.amount
+                name: this.ingredientToEdit.name,
+                amount: this.ingredientToEdit.amount
             });
         });
     }

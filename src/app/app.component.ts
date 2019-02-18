@@ -54,6 +54,34 @@ export class AppComponent implements OnInit {
         // this.signupForm.statusChanges.subscribe(status => {
         //     console.log(status);
         // });
+
+        // Override the form's values, eg) provide defaults
+        // this.signupForm.setValue({
+        //     userData: {
+        //         username: 'Max',
+        //         email: 'max@test.com'
+        //     },
+        //     gender: 'male',
+        //     hobbies: []
+        // });
+
+        // 'hobbies' requires the controls to be prepopulated
+        // Must add controls before setting the values
+        const defaultHobbies = ['hiking', 'cooking', 'eating'];
+        for (let i = 0; i < defaultHobbies.length; ++i) {
+            this.onAddHobby();
+        }
+
+        // Patch specific form values
+        this.signupForm.patchValue({
+            userData: {
+                username: 'Lucy',
+                email: 'lucy@test.com'
+            },
+            gender: 'female',
+            // Must already have controls
+            hobbies: defaultHobbies
+        });
     }
 
     // We already have the form,
@@ -61,6 +89,8 @@ export class AppComponent implements OnInit {
     onSubmit() {
         console.log(this.signupForm);
         console.log(this.signupForm.value.userData.username);
+
+        this.signupForm.reset();
     }
 
     // Add a new control to the form

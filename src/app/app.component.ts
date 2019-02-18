@@ -44,6 +44,16 @@ export class AppComponent implements OnInit {
             // Array of hobby controls, initially empty
             hobbies: new FormArray([])
         });
+
+        // Listen to changes in the form's values
+        // this.signupForm.valueChanges.subscribe(value => {
+        //     console.log(value);
+        // });
+
+        // Listen to changes in the form's status (VALID, INVALID, PENDING)
+        // this.signupForm.statusChanges.subscribe(status => {
+        //     console.log(status);
+        // });
     }
 
     // We already have the form,

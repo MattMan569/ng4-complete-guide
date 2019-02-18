@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 
 @NgModule({
     declarations: [AppComponent],
+    // Reactive forms use the ReactiveFormsModule, not the FormsModule
     imports: [BrowserModule, ReactiveFormsModule, HttpModule],
     providers: [],
     bootstrap: [AppComponent]

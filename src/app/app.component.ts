@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
     selector: 'app-root',
@@ -22,9 +22,13 @@ export class AppComponent implements OnInit {
                 username: new FormControl(null, Validators.required),
                 email: new FormControl(null, [Validators.required, Validators.email])
             }),
+
             // username: new FormControl(null, Validators.required),
             // email: new FormControl(null, [Validators.required, Validators.email]),
-            gender: new FormControl('male')
+            gender: new FormControl('male'),
+
+            // Array of hobby controls, initially empty
+            hobbies: new FormArray([])
         });
     }
 
@@ -33,5 +37,21 @@ export class AppComponent implements OnInit {
     onSubmit() {
         console.log(this.signupForm);
         console.log(this.signupForm.value.userData.username);
+    }
+
+    // Add a new control to the form
+    onAddHobby() {
+        (<FormArray>this.signupForm.get('hobbies')).push(
+            new FormControl(null, Validators.required)
+        );
+
+        // Or:
+        // const control = new FormControl(null, Validators.required);
+        // (<FormArray>this.signupForm.get('hobbies')).push(control);
+    }
+
+    // Explicity define the type to prevent an error message in the HTML code
+    getHobbies() {
+        return (<FormArray>this.signupForm.get('hobbies')).controls;
     }
 }

@@ -50,6 +50,19 @@
                         <input type="radio" [value]="gender" formControlName="gender" />{{ gender }}
                     </label>
                 </div>
+                <!-- Dynamically add form controls -->
+                <div formArrayName="hobbies">
+                    <h4>Your Hobbies</h4>
+                    <button class="btn btn-default" type="button" (click)="onAddHobby()">
+                        Add Hobby
+                    </button>
+                    <div
+                        class="form-group"
+                        *ngFor="let hobbyControl of getHobbies(); let i = index"
+                    >
+                        <input type="text" class="form-control" [formControlName]="i" />
+                    </div>
+                </div>
                 <span *ngIf="signupForm.invalid && signupForm.touched" class="help-block">
                     Please enter valid data!
                 </span>

@@ -20,4 +20,11 @@ export class AppComponent implements OnInit {
             gender: new FormControl('male')
         });
     }
+
+    // We already have the form,
+    // don't need a local reference
+    onSubmit() {
+        console.log(this.signupForm);
+        console.log(this.signupForm.value.username);
+    }
 }

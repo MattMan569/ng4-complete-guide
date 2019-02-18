@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -27,7 +28,13 @@ export class AppComponent implements OnInit {
                     // refers to properties of our class
                     this.forbiddenNames.bind(this)
                 ]),
-                email: new FormControl(null, [Validators.required, Validators.email])
+
+                // Third arg is async validators
+                email: new FormControl(
+                    null,
+                    [Validators.required, Validators.email],
+                    this.forbiddenEmails.bind(this)
+                )
             }),
 
             // username: new FormControl(null, Validators.required),
@@ -76,5 +83,23 @@ export class AppComponent implements OnInit {
 
         // Wrong:
         // return { nameIsForbidden: false };
+    }
+
+    // Custom asynchronous validator
+    // Form will get class ng-pending while the async validator is being resolved
+    forbiddenEmails(control: FormControl): Promise<any> | Observable<any> {
+        const promise = new Promise<any>((resolve, reject) => {
+            // Simulate a server by waiting 1.5s
+            // Send emailIsForbidden if email is test@test.com
+            setTimeout(() => {
+                if (control.value === 'test@test.com') {
+                    resolve({ emailIsForbidden: true });
+                } else {
+                    resolve(null);
+                }
+            }, 1500);
+        });
+
+        return promise;
     }
 }

@@ -43,6 +43,9 @@
                             class="form-control"
                             formControlName="email"
                         />
+                        <span *ngIf="signupForm.get('userData.email').pending" class="help-block">
+                            Checking email...
+                        </span>
                         <span
                             *ngIf="
                                 signupForm.get('userData.email').invalid &&

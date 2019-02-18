@@ -6,6 +6,9 @@ export class ShoppingListService {
     // Notify listeners that the ingredient list has changed
     ingredientsChanged = new Subject<Ingredient[]>();
 
+    // An ingredient has been clicked, will be edited
+    startedEditing = new Subject<number>();
+
     private ingredients: Ingredient[] = [
         new Ingredient('Apples', 5),
         new Ingredient('Tomatoes', 10)

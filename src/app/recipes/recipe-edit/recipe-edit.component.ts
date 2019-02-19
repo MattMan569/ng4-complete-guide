@@ -20,7 +20,7 @@ export class RecipeEditComponent implements OnInit {
         this.route.params.subscribe((params: Params) => {
             this.id = +params.id;
 
-            // Edit mode implied that the id of a recipe to
+            // Edit mode implied that the id of the recipe to
             // edit has also been passed as a query param
             this.editMode = params.id != null;
 
@@ -29,6 +29,10 @@ export class RecipeEditComponent implements OnInit {
             // or a recipe has been clicked
             this.initForm();
         });
+    }
+
+    onSubmit() {
+        console.log(this.recipeForm);
     }
 
     private initForm() {

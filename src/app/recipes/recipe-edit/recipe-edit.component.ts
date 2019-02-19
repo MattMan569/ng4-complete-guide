@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { RecipeService } from '../recipe.service';
+import { Recipe } from '../recipe.model';
 
 @Component({
     selector: 'app-recipe-edit',
@@ -32,7 +33,25 @@ export class RecipeEditComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.recipeForm);
+        // The recipe from the form (new or updated)
+        // const newRecipe = new Recipe(
+        //     this.recipeForm.value.name,
+        //     this.recipeForm.value.description,
+        //     this.recipeForm.value.imagePath,
+        //     this.recipeForm.value.ingredients
+        // );
+
+        if (this.editMode) {
+            // The form has the exact same layout and key names as the recipe model
+            // Can just pass the form value object itself, as it is the same format
+            // this.recipeService.updateRecipe(this.id, newRecipe);
+
+            this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+        } else {
+            // this.recipeService.addRecipe(newRecipe);
+
+            this.recipeService.addRecipe(this.recipeForm.value);
+        }
     }
 
     // Add a new control group the the ingredient

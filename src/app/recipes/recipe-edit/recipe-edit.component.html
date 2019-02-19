@@ -31,13 +31,15 @@
                             id="imagePath"
                             class="form-control"
                             formControlName="imagePath"
+                            #imagePath
                         />
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <img src="" alt="Image preview" class="img-responsive" />
+                    <!-- Get the image from a local reference to the URL field -->
+                    <img [src]="imagePath.value" alt="Image preview" class="img-responsive" />
                 </div>
             </div>
 

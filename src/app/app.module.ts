@@ -5,10 +5,11 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ShortenPipe } from './shorten.pipe';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
     // Add the custom pipe to declarations
-    declarations: [AppComponent, ShortenPipe],
+    declarations: [AppComponent, ShortenPipe, FilterPipe],
     imports: [BrowserModule, FormsModule, HttpModule],
     providers: [],
     bootstrap: [AppComponent]

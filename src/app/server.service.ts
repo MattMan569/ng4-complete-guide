@@ -20,4 +20,8 @@ export class ServerService {
             headers: headers
         });
     }
+
+    getServers() {
+        return this.http.get('https://udemy-ng-http-polsom2m.firebaseio.com/data.json');
+    }
 }

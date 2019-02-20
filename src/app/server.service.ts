@@ -39,6 +39,13 @@ export class ServerService {
             map(response => {
                 // Parse the response as json before returning it
                 const data = response.json();
+
+                // Just to demonstrate the power of map.
+                // No practical purpose.
+                for (const server of data) {
+                    server.name = 'FETCHED_' + server.name;
+                }
+
                 return data;
             })
         );

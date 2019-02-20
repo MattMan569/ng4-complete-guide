@@ -7,7 +7,7 @@ import { ServerService } from './server.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    constructor(private serverService: ServerService) {}
+    appName = this.serverService.getAppName();
 
     servers = [
         {
@@ -21,6 +21,8 @@ export class AppComponent {
             id: this.generateId()
         }
     ];
+
+    constructor(private serverService: ServerService) {}
 
     onAddServer(name: string) {
         this.servers.push({
@@ -45,10 +47,12 @@ export class AppComponent {
 
     onGet() {
         this.serverService.getServers().subscribe(
+            // Good response
             (servers: any[]) => {
                 // console.log(servers);
                 this.servers = servers;
             },
+            // Bad response
             error => {
                 console.log(error);
             }

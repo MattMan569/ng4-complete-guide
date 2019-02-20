@@ -13,16 +13,22 @@ export class RecipeService {
 
     private recipes: Recipe[] = [
         new Recipe(
-            'A Test Recipe',
-            'This is simply a test',
-            'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-            [new Ingredient('Meat', 1), new Ingredient('French Fries', 20)]
+            'Burger & Fries',
+            'A big juicy burger with a side of fries.',
+            'https://www.chatelaine.com/wp-content/uploads/2017/05/Bibimbap-homemade-burgers.jpg',
+            [
+                new Ingredient('Meat', 1),
+                new Ingredient('Buns', 1),
+                new Ingredient('Cheese', 1),
+                new Ingredient('Pickles', 2),
+                new Ingredient('French Fries', 20)
+            ]
         ),
         new Recipe(
-            'Another Test Recipe',
-            'This is simply another test',
-            'https://upload.wikimedia.org/wikipedia/commons/1/15/Recipe_logo.jpeg',
-            [new Ingredient('Buns', 1), new Ingredient('Meat', 1)]
+            'Steak & Onions on Potatoes',
+            'A succulent steak topped with carmalized onions all on a heap of potatoes.',
+            'https://spicysouthernkitchen.com/wp-content/uploads/cubed-steak-8.jpg',
+            [new Ingredient('Steak', 1), new Ingredient('Onions', 5), new Ingredient('Potatoes', 2)]
         )
     ];
 

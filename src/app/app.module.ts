@@ -23,6 +23,7 @@ import { RecipeService } from './recipes/recipe.service';
 import { DataStorageService } from './shared/data-storage.service';
 
 import { DropdownDirective } from './shared/dropdown.directive';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
         SigninComponent
     ],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, AppRoutingModule],
-    providers: [ShoppingListService, RecipeService, DataStorageService],
+    providers: [ShoppingListService, RecipeService, DataStorageService, AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

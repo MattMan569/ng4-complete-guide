@@ -34,6 +34,13 @@ export class RecipeService {
 
     constructor(private slService: ShoppingListService) {}
 
+    // Override the entire recipe list with a new list.
+    // Used when fetching the list from the database.
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
     getRecipes() {
         // Return a direct reference to the array
         // return this.recipes;

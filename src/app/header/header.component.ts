@@ -15,4 +15,10 @@ export class HeaderComponent {
             console.log(response);
         });
     }
+
+    onFetchData() {
+        // Already subscibed in the data storage service,
+        // no need to subscribe here.
+        this.dataStorageService.getRecipes();
+    }
 }

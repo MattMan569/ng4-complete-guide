@@ -15,6 +15,8 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeService } from './recipes/recipe.service';
@@ -34,7 +36,9 @@ import { DropdownDirective } from './shared/dropdown.directive';
         ShoppingEditComponent,
         DropdownDirective,
         RecipeStartComponent,
-        RecipeEditComponent
+        RecipeEditComponent,
+        SignupComponent,
+        SigninComponent
     ],
     imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpModule, AppRoutingModule],
     providers: [ShoppingListService, RecipeService, DataStorageService],

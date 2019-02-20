@@ -22,4 +22,8 @@ export class HeaderComponent {
         // no need to subscribe here.
         this.dataStorageService.getRecipes();
     }
+
+    onLogout() {
+        this.authService.logout();
+    }
 }

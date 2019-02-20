@@ -16,7 +16,13 @@ export class ServerService {
         // The post method only creates an observable, not an actual post request.
         // It must be subscibed to before it will be sent.
         // With firebase, an endpoint can be specified (data.json)
-        return this.http.post('https://udemy-ng-http-polsom2m.firebaseio.com/data.json', servers, {
+        // return this.http.post('https://udemy-ng-http-polsom2m.firebaseio.com/data.json', servers, {
+        //     headers: headers
+        // });
+
+        // POST requests will append data to the firebase database.
+        // Use PUT requests to override the data instead.
+        return this.http.put('https://udemy-ng-http-polsom2m.firebaseio.com/data.json', servers, {
             headers: headers
         });
     }

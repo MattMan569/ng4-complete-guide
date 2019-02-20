@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs';
+
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ServerService {
@@ -22,12 +23,28 @@ export class ServerService {
 
         // POST requests will append data to the firebase database.
         // Use PUT requests to override the data instead.
-        return this.http.put('https://udemy-ng-http-polsom2m.firebaseio.com/data.json', servers, {
-            headers: headers
-        });
+        return this.http.put(
+            // 'https://udemy-ng-http-polsom2m.firebaseio.com/' + this.generateId() + '.json',
+            'https://udemy-ng-http-polsom2m.firebaseio.com/data.json',
+            servers,
+            {
+                headers: headers
+            }
+        );
     }
 
     getServers() {
-        return this.http.get('https://udemy-ng-http-polsom2m.firebaseio.com/data.json');
+        // return this.http.get('https://udemy-ng-http-polsom2m.firebaseio.com/data.json');
+        return this.http.get('https://udemy-ng-http-polsom2m.firebaseio.com/data.json').pipe(
+            map(response => {
+                // Parse the response as json before returning it
+                const data = response.json();
+                return data;
+            })
+        );
+    }
+
+    private generateId() {
+        return Math.round(Math.random() * 10000);
     }
 }

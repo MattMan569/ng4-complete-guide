@@ -1,6 +1,8 @@
 import * as firebase from 'firebase';
 
 export class AuthService {
+    token: string;
+
     constructor() {}
 
     signupUser(email: string, password: string) {
@@ -15,8 +17,31 @@ export class AuthService {
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then(response => {
-                console.log(response);
+                // console.log(response);
+
+                // Get and set the token immediately when
+                // a user signs in
+                firebase
+                    .auth()
+                    .currentUser.getIdToken()
+                    .then((token: string) => {
+                        this.token = token;
+                    });
             })
             .catch(error => console.log(error));
+    }
+
+    // Return the token immediately
+    // and refresh it.
+    getToken() {
+        // Refresh the token asynchronously
+        firebase
+            .auth()
+            .currentUser.getIdToken()
+            .then((token: string) => {
+                this.token = token;
+            });
+
+        return this.token;
     }
 }

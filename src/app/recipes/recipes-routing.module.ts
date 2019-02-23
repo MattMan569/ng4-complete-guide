@@ -10,7 +10,7 @@ import { AuthGuard } from '../auth/auth-guard.service';
 
 const recipesRoutes: Routes = [
     {
-        path: 'recipes',
+        path: '',
         component: RecipesComponent,
         children: [
             // Paths with dynamic params should always go below static links of the same path

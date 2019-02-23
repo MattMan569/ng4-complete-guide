@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { RecipesRoutingModule } from './recipes-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { RecipesComponent } from './recipes.component';
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
@@ -22,8 +23,6 @@ import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.compo
         RecipeItemComponent
     ],
 
-    // Very important: always import the common module
-    // in every feature module
-    imports: [CommonModule, ReactiveFormsModule, RecipesRoutingModule]
+    imports: [CommonModule, ReactiveFormsModule, SharedModule, RecipesRoutingModule]
 })
 export class RecipesModule {}

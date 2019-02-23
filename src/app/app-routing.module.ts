@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { HomeComponent } from './core/home/home.component';
@@ -13,8 +13,11 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    // Configure the router routes and export them
-    imports: [RouterModule.forRoot(appRoutes)],
+    // Configure the router routes.
+    // Enable preloading on all lazily loaded modules.
+    imports: [RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })],
+
+    // Export the routes for use in the application.
     exports: [RouterModule]
 })
 export class AppRoutingModule {}

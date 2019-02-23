@@ -8,8 +8,6 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipeService } from './recipes/recipe.service';
@@ -17,9 +15,10 @@ import { DataStorageService } from './shared/data-storage.service';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
-    declarations: [AppComponent, HeaderComponent, SignupComponent, SigninComponent],
+    declarations: [AppComponent, HeaderComponent],
     // Import the AppRoutingModule module last, to ensure proper routing
     imports: [
         BrowserModule,
@@ -27,6 +26,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
         RecipesModule,
         ShoppingListModule,
         SharedModule,
+        AuthModule,
         AppRoutingModule
     ],
     providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
